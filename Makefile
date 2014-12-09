@@ -8,9 +8,9 @@ GCC_BASE = $(GCC_BIN) -Os $(CFLAGS) -Wimplicit -isysroot $(SDK) -F$(SDK)/System/
 all: dumpdecrypted.dylib
 
 dumpdecrypted.dylib: dumpdecrypted.o 
-	$(GCC_UNIVERSAL) -dynamiclib -o $@ $^
+	$(GCC_UNIVERSAL) -dynamiclib -o $@ $^ -framework Foundation -framework CoreFoundation
 
-%.o: %.c
+%.o: %.m
 	$(GCC_UNIVERSAL) -c -o $@ $< 
 
 clean:
